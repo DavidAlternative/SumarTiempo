@@ -27,6 +27,8 @@ body {
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   margin-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .input-container {
@@ -51,15 +53,27 @@ body {
 }
 
 #add {
-  background-color: #2e2cca;
+  background-color: #2c5364;
+}
+
+#add:hover {
+  background-color: #0f2027;
 }
 
 #ok {
-  background-color: #ff8008;
+  background-color: #2c5364;
+}
+
+#ok:hover {
+  background-color: #0f2027;
 }
 
 #clear {
-  background-color: #ffc837;
+  background-color: #2c5364;
+}
+
+#clear:hover {
+  background-color: #0f2027;
 }
 
 .input {
