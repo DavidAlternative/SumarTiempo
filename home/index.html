@@ -5,21 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../styles/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap" rel="stylesheet">
 
   <title>Calculadora del Tiempo</title>
 </head>
 <body>
-  <form id="form">
-    <input type="number" id="horas" placeholder="horas">
-    <input type="number" id="minutos" placeholder="minutos">
-    <input type="number" id="segundos" placeholder="segundos">
-    <input type="button" value="+" id="add">
-    <input type="button" value="Ok" id="ok">
-    <input type="button" value="Clear" id="clear">
-  </form>
-  <ul id="tiempo">
+  <header>
+    <h1>Calculadora del Tiempo</h1>
+  </header>
+  <main>
+    <form id="form">
+      <div class="input-container">
+        <input type="number" id="horas" placeholder="Horas" class="input">
+        <input type="number" id="minutos" placeholder="Minutos" class="input">
+        <input type="number" id="segundos" placeholder="Segundos" class="input">
+      </div>
+      <div class="button-container">
+        <input type="button" value="Añadir" id="add" class="input-btn">
+        <input type="button" value="Resultado" id="ok" class="input-btn">
+        <input type="button" value="Limpiar" id="clear" class="input-btn">
+      </div>
+    </form>
+    <ul id="tiempo">
 
-  </ul>
+    </ul>
+  </main>
+
+
 </body>
 <script src="../dist/bundle.js"></script>
 </html>

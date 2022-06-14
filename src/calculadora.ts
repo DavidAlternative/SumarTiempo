@@ -1,4 +1,3 @@
-import { hr } from "date-fns/locale";
 import { resultadosSuma, sumarTiempo, clear } from "./sumarTiempo";
 
 let horasSuma: number[]= [];
@@ -13,8 +12,31 @@ function addTime(horas: number,minutos: number,segundos:number)
 }
 
 let listaTiempo: any = document.getElementById("tiempo");
-
 let submitButton = document.getElementById("add") as HTMLButtonElement;
+let segundos = document.getElementById("segundos") as HTMLInputElement;
+let horas = document.getElementById("horas") as HTMLInputElement;
+let minutos = document.getElementById("minutos") as HTMLInputElement;
+
+horas.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    minutos.focus();
+  }
+})
+
+minutos.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    segundos.focus();
+  }
+})
+
+segundos.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    submitButton.click();
+    horas.focus();
+  }
+})
+
+
 submitButton.addEventListener("click", () => {
     let horas = document.getElementById("horas") as HTMLInputElement;
     let minutos = document.getElementById("minutos") as HTMLInputElement;
@@ -40,6 +62,9 @@ submitButton.addEventListener("click", () => {
 
 const ok = document.getElementById("ok") as HTMLButtonElement;
 ok.addEventListener("click", () => {
+    while (listaTiempo.firstChild != null) {
+      listaTiempo.removeChild(listaTiempo.firstChild);
+    }
     sumarTiempo(horasSuma,minutosSuma,segundosSuma);
     let resultado = `Resultado: Horas: ${resultadosSuma[1].horas} Minutos: ${resultadosSuma[1].minutos} Segundos: ${resultadosSuma[1].segundos}`;
     listaTiempo.appendChild(document.createElement("li")).innerHTML = resultado;
@@ -47,6 +72,7 @@ ok.addEventListener("click", () => {
     minutosSuma = [];
     segundosSuma = [];
     clear();
+
 })
 
 const clearBtn = document.getElementById("clear") as HTMLButtonElement;
@@ -61,12 +87,11 @@ clearBtn.addEventListener("click", () => {
     minutos.value = "";
     segundos.value = "";
     clear();
+    while (listaTiempo.firstChild != null) {
+      listaTiempo.removeChild(listaTiempo.firstChild);
+    }
 })
 
 sumarTiempo(horasSuma, minutosSuma, segundosSuma);
-
-for (const resultado of resultadosSuma) {
-  console.log(resultado);
-};
 
 

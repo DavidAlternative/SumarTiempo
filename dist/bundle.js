@@ -12,6 +12,25 @@ function addTime(horas, minutos, segundos) {
 }
 let listaTiempo = document.getElementById("tiempo");
 let submitButton = document.getElementById("add");
+let segundos = document.getElementById("segundos");
+let horas = document.getElementById("horas");
+let minutos = document.getElementById("minutos");
+horas.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        minutos.focus();
+    }
+});
+minutos.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        segundos.focus();
+    }
+});
+segundos.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        submitButton.click();
+        horas.focus();
+    }
+});
 submitButton.addEventListener("click", () => {
     let horas = document.getElementById("horas");
     let minutos = document.getElementById("minutos");
@@ -34,6 +53,9 @@ submitButton.addEventListener("click", () => {
 });
 const ok = document.getElementById("ok");
 ok.addEventListener("click", () => {
+    while (listaTiempo.firstChild != null) {
+        listaTiempo.removeChild(listaTiempo.firstChild);
+    }
     (0, sumarTiempo_1.sumarTiempo)(horasSuma, minutosSuma, segundosSuma);
     let resultado = `Resultado: Horas: ${sumarTiempo_1.resultadosSuma[1].horas} Minutos: ${sumarTiempo_1.resultadosSuma[1].minutos} Segundos: ${sumarTiempo_1.resultadosSuma[1].segundos}`;
     listaTiempo.appendChild(document.createElement("li")).innerHTML = resultado;
@@ -54,12 +76,11 @@ clearBtn.addEventListener("click", () => {
     minutos.value = "";
     segundos.value = "";
     (0, sumarTiempo_1.clear)();
+    while (listaTiempo.firstChild != null) {
+        listaTiempo.removeChild(listaTiempo.firstChild);
+    }
 });
 (0, sumarTiempo_1.sumarTiempo)(horasSuma, minutosSuma, segundosSuma);
-for (const resultado of sumarTiempo_1.resultadosSuma) {
-    console.log(resultado);
-}
-;
 
 },{"./sumarTiempo":2}],2:[function(require,module,exports){
 "use strict";
